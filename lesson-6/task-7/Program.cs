@@ -12,3 +12,17 @@ double k2 = Convert.ToDouble(Console.ReadLine());
 double x = -(b1 -b2) / (k1 - k2);
 double y = k1 * x + b1;
 Console.WriteLine($"x = {x}, y = {y}");
+
+// double[] GetIntersection(double b1, double k1,double b2, double k2)
+// {
+//     if (k1 == k2)
+//     {
+//         Console.WriteLine("Error in the data");
+//         return null;
+//     }
+    
+// double [] intersection = new double[2];
+// intersection[0] = (b2 - b1) / (k1-k2);
+// intersection[1] = intersection[0] * k1 +b1;
+// return intersection;
+// }
