@@ -1,4 +1,4 @@
-﻿//Задайте двумерный массив. Напишите программу, которая поменяет местами первую и последнюю строку массива.
+﻿//Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
 int GetNumberFromConsole(string text)
 {
     Console.WriteLine(text);
@@ -45,19 +45,26 @@ FillArray(array);
 PrintArray(array);
 Console.WriteLine();
 
-void ChangeString(int[,] arr)
+int SumLineElements(int[,] arr, int i)
 {
-    int[,] arr2 = new int[m,n];
-    arr2 = arr;
-    int temp; 
-    for(int j = 0; j < arr.GetLength(1); j++)
-        {
-            temp = arr[0,j];
-            arr[0,j] = arr[arr.GetLength(0)-1, j];
-            arr[arr.GetLength(0)-1, j] = temp;
-        }
-   
-} 
-ChangeString(array);
-PrintArray(array);
+    int sumLine = arr[i,0];
+    for(int j = 1; j < arr.GetLength(1); j++)
+    {
+        sumLine +=arr[i,j];
+    }
+    return sumLine;
 
+}
+
+int  minSumLine = 0;
+int sumLine = SumLineElements(array,0);
+for(int i = 1; i < array.GetLength(0); i++)
+{
+    int tempSumLine = SumLineElements(array,i);
+    if (sumLine > tempSumLine)
+    {
+        sumLine = tempSumLine;
+        minSumLine = i;
+    }
+}
+Console.WriteLine($"Строка с наименьшей суммой элементов {sumLine}");

@@ -1,4 +1,4 @@
-﻿//Задайте двумерный массив. Напишите программу, которая поменяет местами первую и последнюю строку массива.
+﻿//Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 int GetNumberFromConsole(string text)
 {
     Console.WriteLine(text);
@@ -45,19 +45,27 @@ FillArray(array);
 PrintArray(array);
 Console.WriteLine();
 
-void ChangeString(int[,] arr)
+void SortStringArray(int[,] arr)
 {
-    int[,] arr2 = new int[m,n];
-    arr2 = arr;
-    int temp; 
-    for(int j = 0; j < arr.GetLength(1); j++)
+    for(int i = 0; i < arr.GetLength(0); i++)
+    {
+        for(int j = 0; j < arr.GetLength(1); j++)
+    
         {
-            temp = arr[0,j];
-            arr[0,j] = arr[arr.GetLength(0)-1, j];
-            arr[arr.GetLength(0)-1, j] = temp;
+            for(int k = 0; k < arr.GetLength(1)-1; k++)
+        
+            {
+                if (arr[i,k] < arr[i, k + 1])
+        
+                {
+                    int temp = arr[i, k + 1];
+                    arr[i, k + 1] = arr[i,k];
+                    arr[i,k] = temp;
+                }
+            }
         }
-   
-} 
-ChangeString(array);
+    }           
+}
+SortStringArray(array);
 PrintArray(array);
-
+Console.WriteLine();
